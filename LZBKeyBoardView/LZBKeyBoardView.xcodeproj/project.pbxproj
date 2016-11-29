@@ -14,6 +14,7 @@
 		18E571281DEDB93F0048F386 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18E571271DEDB93F0048F386 /* Assets.xcassets */; };
 		18E5712B1DEDB93F0048F386 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18E571291DEDB93F0048F386 /* LaunchScreen.storyboard */; };
 		18E571381DEDBA5A0048F386 /* LZBTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E571371DEDBA5A0048F386 /* LZBTextView.m */; };
+		18E571401DEDD1720048F386 /* LZBUserTextViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E5713F1DEDD1720048F386 /* LZBUserTextViewVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		18E5712C1DEDB93F0048F386 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18E571361DEDBA5A0048F386 /* LZBTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZBTextView.h; sourceTree = "<group>"; };
 		18E571371DEDBA5A0048F386 /* LZBTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZBTextView.m; sourceTree = "<group>"; };
+		18E5713E1DEDD1720048F386 /* LZBUserTextViewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZBUserTextViewVC.h; sourceTree = "<group>"; };
+		18E5713F1DEDD1720048F386 /* LZBUserTextViewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZBUserTextViewVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +73,8 @@
 				18E571271DEDB93F0048F386 /* Assets.xcassets */,
 				18E571291DEDB93F0048F386 /* LaunchScreen.storyboard */,
 				18E5712C1DEDB93F0048F386 /* Info.plist */,
+				18E5713E1DEDD1720048F386 /* LZBUserTextViewVC.h */,
+				18E5713F1DEDD1720048F386 /* LZBUserTextViewVC.m */,
 				18E5711B1DEDB93F0048F386 /* Supporting Files */,
 			);
 			path = LZBKeyBoardView;
@@ -164,6 +169,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18E571401DEDD1720048F386 /* LZBUserTextViewVC.m in Sources */,
 				18E571381DEDBA5A0048F386 /* LZBTextView.m in Sources */,
 				18E571231DEDB93F0048F386 /* ViewController.m in Sources */,
 				18E571201DEDB93F0048F386 /* AppDelegate.m in Sources */,

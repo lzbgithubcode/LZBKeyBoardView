@@ -49,9 +49,7 @@
 - (void)setPlaceholder:(NSString *)placeholder
 {
     _placeholder = [placeholder copy];
-    
     self.placeholderLabel.text = placeholder;
-    
     [self computePlaceholderLabelSize];
 }
 

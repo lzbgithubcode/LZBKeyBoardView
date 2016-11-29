@@ -9,32 +9,69 @@
 #import "ViewController.h"
 #import "LZBTextView.h"
 
-@interface ViewController ()
-
+@interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) LZBTextView *textView;
+@property (nonatomic, strong) UITableView *tableView;
+
+@property (nonatomic, strong) NSArray <NSString *>*methodKeys;
+@property (nonatomic, strong) NSArray <NSString *>*methodValues;
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.view addSubview:self.textView];
-    self.textView.frame = CGRectMake(0, 100, 300, 200);
-    self.textView.placeholder = @"请输入文字";
-    self.textView.placeholderColor = [UIColor redColor];
-    self.textView.font = [UIFont systemFontOfSize:18.0];
-    self.textView.cursorOffset = UIOffsetMake(5, 10);
+    [self.view addSubview:self.tableView];
+    self.title= @"主页";
+    self.methodKeys = @[@"LZBUserTextViewVC",
+                        @"LZBUserTextViewVC",
+                        @"LZBUserTextViewVC",];
+    //显示文字
+    self.methodValues = @[@"LZBTextView的使用",
+                          @"LZBTextView的使用",
+                          @"LZBTextView的使用",
+                          ];
+
 }
 
 
-- (LZBTextView *)textView
+#pragma mark- tableView
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-  if(_textView == nil)
-  {
-      _textView = [[LZBTextView alloc]init];
-      _textView.backgroundColor = [UIColor blueColor];
-  }
-    return _textView;
+    return self.methodKeys.count;
 }
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *cellID = @"loadAnimaitonCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    if(cell == nil)
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+    cell.textLabel.text = self.methodValues[indexPath.row];
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *method = self.methodKeys[indexPath.row];
+    Class classVC = NSClassFromString(method);
+    UIViewController *vc = (UIViewController *)[classVC new];
+    [self.navigationController pushViewController:vc animated:YES];
+   
+}
+
+
+#pragma mark - 懒加载
+- (UITableView *)tableView
+{
+    if(_tableView == nil)
+    {
+        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height) style:UITableViewStylePlain];
+        _tableView.dataSource = self;
+        _tableView.delegate = self;
+    }
+    return _tableView;
+}
+
 
 @end
