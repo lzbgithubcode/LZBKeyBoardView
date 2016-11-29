@@ -13,6 +13,7 @@
 		18E571261DEDB93F0048F386 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18E571241DEDB93F0048F386 /* Main.storyboard */; };
 		18E571281DEDB93F0048F386 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18E571271DEDB93F0048F386 /* Assets.xcassets */; };
 		18E5712B1DEDB93F0048F386 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18E571291DEDB93F0048F386 /* LaunchScreen.storyboard */; };
+		18E571381DEDBA5A0048F386 /* LZBTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E571371DEDBA5A0048F386 /* LZBTextView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		18E571271DEDB93F0048F386 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18E5712A1DEDB93F0048F386 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18E5712C1DEDB93F0048F386 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18E571361DEDBA5A0048F386 /* LZBTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZBTextView.h; sourceTree = "<group>"; };
+		18E571371DEDBA5A0048F386 /* LZBTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZBTextView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,7 @@
 		18E5711A1DEDB93F0048F386 /* LZBKeyBoardView */ = {
 			isa = PBXGroup;
 			children = (
+				18E571351DEDBA5A0048F386 /* LZBKeyBoardView */,
 				18E5711E1DEDB93F0048F386 /* AppDelegate.h */,
 				18E5711F1DEDB93F0048F386 /* AppDelegate.m */,
 				18E571211DEDB93F0048F386 /* ViewController.h */,
@@ -77,6 +81,15 @@
 				18E5711C1DEDB93F0048F386 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		18E571351DEDBA5A0048F386 /* LZBKeyBoardView */ = {
+			isa = PBXGroup;
+			children = (
+				18E571361DEDBA5A0048F386 /* LZBTextView.h */,
+				18E571371DEDBA5A0048F386 /* LZBTextView.m */,
+			);
+			path = LZBKeyBoardView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,6 +164,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18E571381DEDBA5A0048F386 /* LZBTextView.m in Sources */,
 				18E571231DEDB93F0048F386 /* ViewController.m in Sources */,
 				18E571201DEDB93F0048F386 /* AppDelegate.m in Sources */,
 				18E5711D1DEDB93F0048F386 /* main.m in Sources */,
