@@ -26,7 +26,6 @@
     self.textView.placeholderColor = [UIColor redColor];
     self.textView.font = [UIFont systemFontOfSize:18.0];
     self.textView.cursorOffset = UIOffsetMake(5, 10);
-   
 }
 
 - (LZBTextView *)textView

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18D81EC81DEEF4D5007456A0 /* UIViewController+LZBKeyBoardObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D81EC71DEEF4D5007456A0 /* UIViewController+LZBKeyBoardObserver.m */; };
+		18D81ECB1DEEF7A8007456A0 /* LZBAutoAdjustViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D81ECA1DEEF7A8007456A0 /* LZBAutoAdjustViewVC.m */; };
 		18E5711D1DEDB93F0048F386 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E5711C1DEDB93F0048F386 /* main.m */; };
 		18E571201DEDB93F0048F386 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E5711F1DEDB93F0048F386 /* AppDelegate.m */; };
 		18E571231DEDB93F0048F386 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E571221DEDB93F0048F386 /* ViewController.m */; };
@@ -18,6 +20,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		18D81EC61DEEF4D5007456A0 /* UIViewController+LZBKeyBoardObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+LZBKeyBoardObserver.h"; sourceTree = "<group>"; };
+		18D81EC71DEEF4D5007456A0 /* UIViewController+LZBKeyBoardObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LZBKeyBoardObserver.m"; sourceTree = "<group>"; };
+		18D81EC91DEEF7A8007456A0 /* LZBAutoAdjustViewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZBAutoAdjustViewVC.h; sourceTree = "<group>"; };
+		18D81ECA1DEEF7A8007456A0 /* LZBAutoAdjustViewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZBAutoAdjustViewVC.m; sourceTree = "<group>"; };
 		18E571181DEDB93F0048F386 /* LZBKeyBoardView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LZBKeyBoardView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18E5711C1DEDB93F0048F386 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		18E5711E1DEDB93F0048F386 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -75,6 +81,8 @@
 				18E5712C1DEDB93F0048F386 /* Info.plist */,
 				18E5713E1DEDD1720048F386 /* LZBUserTextViewVC.h */,
 				18E5713F1DEDD1720048F386 /* LZBUserTextViewVC.m */,
+				18D81EC91DEEF7A8007456A0 /* LZBAutoAdjustViewVC.h */,
+				18D81ECA1DEEF7A8007456A0 /* LZBAutoAdjustViewVC.m */,
 				18E5711B1DEDB93F0048F386 /* Supporting Files */,
 			);
 			path = LZBKeyBoardView;
@@ -93,6 +101,8 @@
 			children = (
 				18E571361DEDBA5A0048F386 /* LZBTextView.h */,
 				18E571371DEDBA5A0048F386 /* LZBTextView.m */,
+				18D81EC61DEEF4D5007456A0 /* UIViewController+LZBKeyBoardObserver.h */,
+				18D81EC71DEEF4D5007456A0 /* UIViewController+LZBKeyBoardObserver.m */,
 			);
 			path = LZBKeyBoardView;
 			sourceTree = "<group>";
@@ -169,10 +179,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18D81EC81DEEF4D5007456A0 /* UIViewController+LZBKeyBoardObserver.m in Sources */,
 				18E571401DEDD1720048F386 /* LZBUserTextViewVC.m in Sources */,
 				18E571381DEDBA5A0048F386 /* LZBTextView.m in Sources */,
 				18E571231DEDB93F0048F386 /* ViewController.m in Sources */,
 				18E571201DEDB93F0048F386 /* AppDelegate.m in Sources */,
+				18D81ECB1DEEF7A8007456A0 /* LZBAutoAdjustViewVC.m in Sources */,
 				18E5711D1DEDB93F0048F386 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -330,6 +342,7 @@
 				18E571311DEDB93F0048F386 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

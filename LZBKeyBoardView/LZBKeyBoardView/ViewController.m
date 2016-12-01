@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "LZBTextView.h"
+#import "LZBAutoAdjustViewVC.h"
 
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) LZBTextView *textView;
@@ -24,11 +25,11 @@
     [self.view addSubview:self.tableView];
     self.title= @"主页";
     self.methodKeys = @[@"LZBUserTextViewVC",
-                        @"LZBUserTextViewVC",
+                        @"LZBAutoAdjustViewVC",
                         @"LZBUserTextViewVC",];
     //显示文字
     self.methodValues = @[@"LZBTextView的使用",
-                          @"LZBTextView的使用",
+                          @"自定调整View来适应键盘",
                           @"LZBTextView的使用",
                           ];
 
