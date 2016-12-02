@@ -10,6 +10,8 @@
 #import <objc/runtime.h>
 
 static const void *lzbkeyBoard_DefaultMarginKey = @"lzbkeyBoard_DefaultMarginKey";
+static NSObject *_keyboardWillShowObser;
+static NSObject *_keyboardWillHideObser;
 @implementation UIViewController (LZBKeyBoardObserver)
 - (void)setLzb_keyBoard_DefaultMargin:(NSInteger)lzb_keyBoard_DefaultMargin
 {
@@ -33,6 +35,9 @@ static const void *lzbkeyBoard_DefaultMarginKey = @"lzbkeyBoard_DefaultMarginKey
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+    //键盘手势
+    [[NSNotificationCenter defaultCenter] removeObserver:_keyboardWillShowObser name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:_keyboardWillHideObser name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)lzb_addKeyBoardTapAnyAutoDismissKeyBoard
@@ -41,19 +46,21 @@ static const void *lzbkeyBoard_DefaultMarginKey = @"lzbkeyBoard_DefaultMarginKey
                                                                              action:@selector(tapAnywhereToDismissKeyboard:)];
     NSOperationQueue *mainQuene =[NSOperationQueue mainQueue];
      __weak UIViewController *weakSelf = self;
-    [[NSNotificationCenter defaultCenter] addObserverForName:UIKeyboardWillShowNotification
-                                                      object:nil
-                                                       queue:mainQuene
-                                                  usingBlock:^(NSNotification * _Nonnull note) {
-                                                    [weakSelf.view addGestureRecognizer:lzbTap];
-                                                   }];
+   _keyboardWillShowObser=[[NSNotificationCenter defaultCenter]
+                           addObserverForName:UIKeyboardWillShowNotification
+                                       object:nil
+                                        queue:mainQuene
+                                   usingBlock:^(NSNotification * _Nonnull note) {
+                                [weakSelf.view addGestureRecognizer:lzbTap];
+                            }];
     
-    [[NSNotificationCenter defaultCenter] addObserverForName:UIKeyboardWillHideNotification
-                    object:nil
-                     queue:mainQuene
-                usingBlock:^(NSNotification *note){
-                    [weakSelf.view removeGestureRecognizer:lzbTap];
-                }];
+  _keyboardWillHideObser = [[NSNotificationCenter defaultCenter]
+                            addObserverForName:UIKeyboardWillHideNotification
+                                        object:nil
+                                         queue:mainQuene
+                                    usingBlock:^(NSNotification *note){
+                           [weakSelf.view removeGestureRecognizer:lzbTap];
+                          }];
 }
 
 

@@ -26,7 +26,7 @@
 - (void)lzb_addKeyBoardObserverAutoAdjustHeight;
 
 /**
-   移除键盘监听观察者
+   移除键盘监听观察者，必须实现
  */
 - (void)lzb_removeKeyBoardObserver;
 @end
