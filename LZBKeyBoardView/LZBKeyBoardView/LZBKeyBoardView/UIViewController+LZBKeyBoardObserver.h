@@ -7,13 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+//设置键盘和第一响应者的间距
+#define lzb_settingKeyBoard_DefaultMargin 10
 
 @interface UIViewController (LZBKeyBoardObserver)
-
-/**
-    设置键盘与第一响应者的默认间距 lzb_keyBoard_DefaultMargin = 0
- */
-@property (nonatomic, assign) NSInteger lzb_keyBoard_DefaultMargin;
 
 /**
     增加点击任意地方消除键盘

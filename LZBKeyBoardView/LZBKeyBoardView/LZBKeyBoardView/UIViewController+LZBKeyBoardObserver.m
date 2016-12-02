@@ -9,20 +9,10 @@
 #import "UIViewController+LZBKeyBoardObserver.h"
 #import <objc/runtime.h>
 
-static const void *lzbkeyBoard_DefaultMarginKey = @"lzbkeyBoard_DefaultMarginKey";
+CGFloat _lzb_keyBoard_DefaultMargin = lzb_settingKeyBoard_DefaultMargin;
 static NSObject *_keyboardWillShowObser;
 static NSObject *_keyboardWillHideObser;
 @implementation UIViewController (LZBKeyBoardObserver)
-- (void)setLzb_keyBoard_DefaultMargin:(NSInteger)lzb_keyBoard_DefaultMargin
-{
-    objc_setAssociatedObject(self, lzbkeyBoard_DefaultMarginKey, @(lzb_keyBoard_DefaultMargin), OBJC_ASSOCIATION_ASSIGN);
-}
-
-- (NSInteger)lzb_keyBoard_DefaultMargin
-{
-    return [objc_getAssociatedObject(self,lzbkeyBoard_DefaultMarginKey) integerValue];
-}
-
 
 #pragma mark - API
 - (void)lzb_addKeyBoardObserverAutoAdjustHeight
@@ -82,18 +72,20 @@ static NSObject *_keyboardWillHideObser;
     CGFloat keyBoardResponseViewMargin = firstResponseViewMaxY - keyBoardY;
     if(firstResponseViewMaxY > keyBoardY)
     {
-        self.lzb_keyBoard_DefaultMargin +=keyBoardResponseViewMargin;
+        _lzb_keyBoard_DefaultMargin = lzb_settingKeyBoard_DefaultMargin;
+        _lzb_keyBoard_DefaultMargin +=keyBoardResponseViewMargin;
         __weak UIViewController *weakSelf = self;
         [UIView animateKeyframesWithDuration:keyboardAnimaitonDuration
                                        delay:0
                                      options:option
                                   animations:^{
                                       CGRect frame = weakSelf.view.frame;
-                                      frame.origin.y -= weakSelf.lzb_keyBoard_DefaultMargin;
+                                      frame.origin.y -= _lzb_keyBoard_DefaultMargin;
                                       weakSelf.view.frame = frame;
              
            } completion:nil];
     }
+   
 }
 
 - (void)keyboardWillHide:(NSNotification *)notification
@@ -106,11 +98,12 @@ static NSObject *_keyboardWillHideObser;
                         options:option
                      animations:^{
                          CGRect frame = weakSelf.view.frame;
-                         frame.origin.y += weakSelf.lzb_keyBoard_DefaultMargin;
+                         frame.origin.y += _lzb_keyBoard_DefaultMargin;
                          weakSelf.view.frame = frame;
                      }
                      completion:nil];
-     self.lzb_keyBoard_DefaultMargin = 0;
+    
+     _lzb_keyBoard_DefaultMargin = 0;
 }
 - (UIView *)findFirstResponderWithView:(UIView *)view
 {

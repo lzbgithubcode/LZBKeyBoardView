@@ -11,6 +11,8 @@
 #import "UIViewController+LZBKeyBoardObserver.h"
 
 @interface LZBAutoAdjustViewVC ()
+
+
 @property (nonatomic, strong) UIView *lastView;
 @end
 
@@ -21,6 +23,15 @@
     self.view.backgroundColor = [UIColor whiteColor];
     //去除边沿延伸效果
     self.edgesForExtendedLayout = UIRectEdgeNone;
+    
+    UILabel *titleLabel = [UILabel new];
+    titleLabel.textColor = [UIColor purpleColor];
+    titleLabel.text = @"注意：文本框自动适应键盘高度，主要用在登录页面";
+    titleLabel.numberOfLines = 0;
+    titleLabel.frame = CGRectMake(0, 20, [UIScreen mainScreen].bounds.size.width, 50);
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:titleLabel];
+    
     //第一个
     LZBTextView *textView1 = [[LZBTextView alloc]initWithFrame:CGRectMake(100, 100, 200, 40)];
     [self.view addSubview:textView1];
@@ -71,7 +82,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.lzb_keyBoard_DefaultMargin = 10;
     [self lzb_addKeyBoardTapAnyAutoDismissKeyBoard];
     [self lzb_addKeyBoardObserverAutoAdjustHeight];
 }
