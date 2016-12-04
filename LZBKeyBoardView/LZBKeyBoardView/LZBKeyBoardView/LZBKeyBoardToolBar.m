@@ -15,6 +15,7 @@
 
 #define kKeyboardViewToolBarHeight 50  // 默认键盘输入工具条的高度
 #define kKeyboardViewToolBar_TextView_Height 35  // 默认键盘输入框的高度
+#define kKeyboardViewToolBar_TextView_LimitHeight 60  // 默认键盘输入框的限制高度
 #define kKeyboardViewToolBar_SendBtn_Width 40  // 默认发送按钮的宽度
 #define kKeyboardViewToolBar_Horizontal_DefaultMargin 15  //水平方向默认间距
 #define kKeyboardViewToolBar_Vertical_DefaultMargin 8  //垂直方向默认间距
@@ -34,6 +35,7 @@
 @property (nonatomic, assign) CGFloat textHeight;   //输入文字高度
 @property (nonatomic, assign) CGFloat animationDuration;  //动画时间
 
+
 @end
 
 @implementation LZBKeyBoardToolBar
@@ -50,7 +52,6 @@
     return toolBar;
     
 }
-
 - (void)setInputViewPlaceHolderText:(NSString *)placeText
 {
     self.inputTextView.placeholder = placeText;
@@ -105,8 +106,9 @@
     self.sendBtn.LZB_x = self.LZB_width - sendButtonSize.width - kKeyboardViewToolBar_Horizontal_DefaultMargin;
     
     
-    self.inputTextView.LZB_x = kKeyboardViewToolBar_Horizontal_DefaultMargin;
     self.inputTextView.LZB_width = self.LZB_width - sendButtonSize.width - 3 *kKeyboardViewToolBar_Horizontal_DefaultMargin;
+    self.inputTextView.LZB_x = kKeyboardViewToolBar_Horizontal_DefaultMargin;
+
     
     [UIView animateWithDuration:self.animationDuration animations:^{
         weakSelf.inputTextView.LZB_heigth = weakSelf.LZB_heigth - 2 *kKeyboardViewToolBar_Vertical_DefaultMargin;
@@ -115,6 +117,7 @@
         weakSelf.bottomLine.LZB_y = weakSelf.LZB_heigth - weakSelf.bottomLine.LZB_heigth;
     }];
     
+   
 }
 
 
@@ -136,13 +139,29 @@
         self.LZB_y = offsetMarginY;
     } completion:nil];
     
-   
-    
 }
 
 - (void)textDidChange
 {
-  
+   if([self.inputTextView.text containsString:@"\n"])
+   {
+     // self.inputTextView.text = nil;
+       return;
+   }
+    
+    CGFloat margin = self.inputTextView.textContainerInset.left + self.inputTextView.textContainerInset.right;
+    
+    CGFloat height = [self.inputTextView.text boundingRectWithSize:CGSizeMake(self.inputTextView.LZB_width - margin, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : self.inputTextView.font} context:nil].size.height;
+    
+    if(height == self.textHeight) return;
+    
+    // 确保输入框不会无限增高，控制在显示4行
+    if (height > kKeyboardViewToolBar_TextView_LimitHeight) {
+        return;
+    }
+    self.textHeight = height;
+    
+    [self setNeedsLayout];
 }
 
 #pragma mark - lazy
@@ -161,7 +180,7 @@
   if(_inputTextView == nil)
   {
       _inputTextView = [[LZBTextView alloc]init];
-      _inputTextView.textContainerInset = UIEdgeInsetsMake(8, 8, 8, 8);
+      //_inputTextView.textContainerInset = UIEdgeInsetsMake(8, 8, 8, 8);
       _inputTextView.layer.cornerRadius = 4;
       _inputTextView.layer.masksToBounds = YES;
       _inputTextView.layer.borderWidth = 1;

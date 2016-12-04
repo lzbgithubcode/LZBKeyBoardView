@@ -22,6 +22,16 @@
 
 
 /**
+ 弹出自定义键盘和输入框工具条--无表情键盘
+  @param toolBarHeight 工具条的高度
+ @param sendTextBlock 返回输入框输入的文字
+ @return 返回LZBKeyBoardToolBar
+ */
+- (instancetype)initWithKeyBoardSendConfigToolBarHeight:(CGFloat)toolBarHeight TextCompletion:(void(^)(NSString *sendText))sendTextBlock;
+
+
+
+/**
  设置输入框占位文字
 
  @param placeText 占位文字
