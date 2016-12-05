@@ -65,6 +65,7 @@
     [self.inputTextView resignFirstResponder];
 }
 
+
 #pragma mark - private
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -89,6 +90,7 @@
 {
     [super layoutSubviews];
      __weak typeof(self) weakSelf = self;
+    
     CGFloat height = (self.textHeight + kKeyboardViewToolBar_TextView_Height)> kKeyboardViewToolBarHeight ? (self.textHeight + kKeyboardViewToolBar_TextView_Height) : kKeyboardViewToolBarHeight;
     CGFloat offsetY = self.LZB_heigth - height;
     [UIView animateWithDuration:self.animationDuration animations:^{
@@ -117,7 +119,7 @@
         weakSelf.bottomLine.LZB_y = weakSelf.LZB_heigth - weakSelf.bottomLine.LZB_heigth;
     }];
     
-   
+    [self.inputTextView setNeedsUpdateConstraints];
 }
 
 
@@ -145,7 +147,7 @@
 {
    if([self.inputTextView.text containsString:@"\n"])
    {
-     // self.inputTextView.text = nil;
+       [self sendBtnClick];
        return;
    }
     
@@ -164,6 +166,16 @@
     [self setNeedsLayout];
 }
 
+- (void)sendBtnClick
+{
+   if(self.sendTextBlock)
+       self.sendTextBlock(self.inputTextView.text);
+    self.inputTextView.text = nil;
+    self.textHeight = 0;
+    [self.inputTextView resignFirstResponder];
+    [self setNeedsLayout];
+}
+
 #pragma mark - lazy
 - (UIButton *)sendBtn
 {
@@ -172,6 +184,7 @@
       _sendBtn = [UIButton buttonWithType:UIButtonTypeCustom];
       [_sendBtn setImage:[UIImage imageNamed:@"btn_comment_expression_send"] forState:UIControlStateNormal];
       [_sendBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+      [_sendBtn addTarget:self action:@selector(sendBtnClick) forControlEvents:UIControlEventTouchUpInside];
   }
     return _sendBtn;
 }
@@ -180,7 +193,6 @@
   if(_inputTextView == nil)
   {
       _inputTextView = [[LZBTextView alloc]init];
-      //_inputTextView.textContainerInset = UIEdgeInsetsMake(8, 8, 8, 8);
       _inputTextView.layer.cornerRadius = 4;
       _inputTextView.layer.masksToBounds = YES;
       _inputTextView.layer.borderWidth = 1;

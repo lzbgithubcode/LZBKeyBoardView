@@ -12,7 +12,7 @@
 
 
 /**
- 弹出自定义键盘和输入框工具条--无表情键盘
+ 弹出自定义键盘和输入框工具条--无表情键盘  注意：一定是要在viewDidLayout中增加控件
 
  @param toolBarHeight 工具条的高度
  @param sendTextBlock 返回输入框输入的文字
@@ -21,13 +21,13 @@
 + (LZBKeyBoardToolBar *)showKeyBoardWithConfigToolBarHeight:(CGFloat)toolBarHeight sendTextCompletion:(void(^)(NSString *sendText))sendTextBlock;
 
 
-/**
- 弹出自定义键盘和输入框工具条--无表情键盘
-  @param toolBarHeight 工具条的高度
- @param sendTextBlock 返回输入框输入的文字
- @return 返回LZBKeyBoardToolBar
- */
-- (instancetype)initWithKeyBoardSendConfigToolBarHeight:(CGFloat)toolBarHeight TextCompletion:(void(^)(NSString *sendText))sendTextBlock;
+///**
+// 弹出自定义键盘和输入框工具条--无表情键盘
+//  @param toolBarHeight 工具条的高度
+// @param sendTextBlock 返回输入框输入的文字
+// @return 返回LZBKeyBoardToolBar
+// */
+//- (instancetype)initWithKeyBoardSendConfigToolBarHeight:(CGFloat)toolBarHeight TextCompletion:(void(^)(NSString *sendText))sendTextBlock;
 
 
 

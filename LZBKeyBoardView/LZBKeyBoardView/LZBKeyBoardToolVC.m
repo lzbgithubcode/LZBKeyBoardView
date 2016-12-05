@@ -11,6 +11,8 @@
 
 
 @interface LZBKeyBoardToolVC ()
+
+@property (nonatomic, strong) UILabel *textLabel;
 @property (nonatomic, strong) LZBKeyBoardToolBar *keyboardView ;
 @end
 
@@ -18,30 +20,50 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //去除边沿延伸效果
     self.view.backgroundColor = [UIColor grayColor];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    [self.view addSubview:self.keyboardView];
+    [self.view addSubview:self.textLabel];
+    self.textLabel.frame = CGRectMake(0, 50, [UIScreen mainScreen].bounds.size.width, 300);
    
+    
   
     
 }
 
-- (void)viewDidLayoutSubviews
-{
-    [super viewDidLayoutSubviews];
-    [self.view addSubview:self.keyboardView];
-}
+
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     [self.view endEditing:YES];
 }
 
+
+#pragma mark - lazy
 - (LZBKeyBoardToolBar *)keyboardView
 {
   if(_keyboardView == nil)
   {
-      _keyboardView = [LZBKeyBoardToolBar showKeyBoardWithConfigToolBarHeight:0 sendTextCompletion:nil];
+        __weak typeof(self) weakSelf = self;
+      _keyboardView = [LZBKeyBoardToolBar showKeyBoardWithConfigToolBarHeight:0 sendTextCompletion:^(NSString *sendText) {
+          weakSelf.textLabel.text = sendText;
+      }];
   }
     return _keyboardView;
+}
+
+- (UILabel *)textLabel
+{
+  if(_textLabel == nil)
+  {
+      _textLabel = [UILabel new];
+      _textLabel.textAlignment = NSTextAlignmentCenter;
+      _textLabel.textColor = [UIColor redColor];
+      _textLabel.text = @"显示输入框输入文字";
+      _textLabel.numberOfLines = 0;
+  }
+    return _textLabel;
 }
 
 
