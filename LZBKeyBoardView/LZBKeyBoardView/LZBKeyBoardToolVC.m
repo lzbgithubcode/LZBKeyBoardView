@@ -20,16 +20,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //去除边沿延伸效果
+  
     self.view.backgroundColor = [UIColor grayColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self.view addSubview:self.keyboardView];
     [self.view addSubview:self.textLabel];
     self.textLabel.frame = CGRectMake(0, 50, [UIScreen mainScreen].bounds.size.width, 300);
-   
-    
-  
-    
+
 }
 
 

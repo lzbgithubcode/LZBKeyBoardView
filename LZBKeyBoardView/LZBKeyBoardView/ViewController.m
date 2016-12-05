@@ -30,9 +30,9 @@
                         @"LZBAutoAdjustViewVC",
                         @"LZBKeyBoardToolVC",];
     //显示文字
-    self.methodValues = @[@"LZBTextView的使用",
-                          @"自定调整View来适应键盘",
-                          @"无表情键盘工具条使用",
+    self.methodValues = @[@"LZBTextView的使用 - 输入多行文字",
+                          @"自定调整View来适应键盘-登录页面常用",
+                          @"无表情键盘工具条使用 - 发布评论常用",
                           ];
 
 }
