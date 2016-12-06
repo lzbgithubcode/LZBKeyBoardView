@@ -9,10 +9,6 @@
 /* Begin PBXBuildFile section */
 		18A667B41DF40F6A00BC6664 /* LZBKeyBoardToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A667B31DF40F6A00BC6664 /* LZBKeyBoardToolBar.m */; };
 		18A667B71DF415DE00BC6664 /* UIView+LZBViewFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A667B61DF415DE00BC6664 /* UIView+LZBViewFrame.m */; };
-		18A667BB1DF4169300BC6664 /* iocn_comment_expression@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A667B91DF4169300BC6664 /* iocn_comment_expression@2x.png */; };
-		18A667BC1DF4169300BC6664 /* iocn_comment_expression@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A667BA1DF4169300BC6664 /* iocn_comment_expression@3x.png */; };
-		18A667C21DF43F8E00BC6664 /* btn_comment_expression_send@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A667C01DF43F8E00BC6664 /* btn_comment_expression_send@2x.png */; };
-		18A667C31DF43F8E00BC6664 /* btn_comment_expression_send@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A667C11DF43F8E00BC6664 /* btn_comment_expression_send@3x.png */; };
 		18A667C61DF445C900BC6664 /* LZBKeyBoardToolVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A667C51DF445C900BC6664 /* LZBKeyBoardToolVC.m */; };
 		18D81EC81DEEF4D5007456A0 /* UIViewController+LZBKeyBoardObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D81EC71DEEF4D5007456A0 /* UIViewController+LZBKeyBoardObserver.m */; };
 		18D81ECB1DEEF7A8007456A0 /* LZBAutoAdjustViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D81ECA1DEEF7A8007456A0 /* LZBAutoAdjustViewVC.m */; };
@@ -24,6 +20,12 @@
 		18E5712B1DEDB93F0048F386 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18E571291DEDB93F0048F386 /* LaunchScreen.storyboard */; };
 		18E571381DEDBA5A0048F386 /* LZBTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E571371DEDBA5A0048F386 /* LZBTextView.m */; };
 		18E571401DEDD1720048F386 /* LZBUserTextViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E5713F1DEDD1720048F386 /* LZBUserTextViewVC.m */; };
+		18F07ECA1DF64D4D009D5069 /* LZBKeyBoardToolEmojiBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F07EC91DF64D4D009D5069 /* LZBKeyBoardToolEmojiBar.m */; };
+		18F07ECE1DF65191009D5069 /* NSString+LZBTranscoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F07ECD1DF65191009D5069 /* NSString+LZBTranscoding.m */; };
+		18F07ED11DF656C9009D5069 /* LZBEmojiModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F07ED01DF656C9009D5069 /* LZBEmojiModel.m */; };
+		18F07ED41DF6577F009D5069 /* LZBEmojiButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F07ED31DF6577F009D5069 /* LZBEmojiButton.m */; };
+		18F07ED71DF658A9009D5069 /* LZBFaceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F07ED61DF658A9009D5069 /* LZBFaceView.m */; };
+		18F07EE31DF65959009D5069 /* Resource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 18F07EE21DF65959009D5069 /* Resource.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,10 +33,6 @@
 		18A667B31DF40F6A00BC6664 /* LZBKeyBoardToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZBKeyBoardToolBar.m; sourceTree = "<group>"; };
 		18A667B51DF415DE00BC6664 /* UIView+LZBViewFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LZBViewFrame.h"; sourceTree = "<group>"; };
 		18A667B61DF415DE00BC6664 /* UIView+LZBViewFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LZBViewFrame.m"; sourceTree = "<group>"; };
-		18A667B91DF4169300BC6664 /* iocn_comment_expression@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iocn_comment_expression@2x.png"; sourceTree = "<group>"; };
-		18A667BA1DF4169300BC6664 /* iocn_comment_expression@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iocn_comment_expression@3x.png"; sourceTree = "<group>"; };
-		18A667C01DF43F8E00BC6664 /* btn_comment_expression_send@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_comment_expression_send@2x.png"; sourceTree = "<group>"; };
-		18A667C11DF43F8E00BC6664 /* btn_comment_expression_send@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_comment_expression_send@3x.png"; sourceTree = "<group>"; };
 		18A667C41DF445C900BC6664 /* LZBKeyBoardToolVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZBKeyBoardToolVC.h; sourceTree = "<group>"; };
 		18A667C51DF445C900BC6664 /* LZBKeyBoardToolVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZBKeyBoardToolVC.m; sourceTree = "<group>"; };
 		18D81EC61DEEF4D5007456A0 /* UIViewController+LZBKeyBoardObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+LZBKeyBoardObserver.h"; sourceTree = "<group>"; };
@@ -55,6 +53,17 @@
 		18E571371DEDBA5A0048F386 /* LZBTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZBTextView.m; sourceTree = "<group>"; };
 		18E5713E1DEDD1720048F386 /* LZBUserTextViewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZBUserTextViewVC.h; sourceTree = "<group>"; };
 		18E5713F1DEDD1720048F386 /* LZBUserTextViewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZBUserTextViewVC.m; sourceTree = "<group>"; };
+		18F07EC81DF64D4D009D5069 /* LZBKeyBoardToolEmojiBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZBKeyBoardToolEmojiBar.h; sourceTree = "<group>"; };
+		18F07EC91DF64D4D009D5069 /* LZBKeyBoardToolEmojiBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZBKeyBoardToolEmojiBar.m; sourceTree = "<group>"; };
+		18F07ECC1DF65191009D5069 /* NSString+LZBTranscoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LZBTranscoding.h"; sourceTree = "<group>"; };
+		18F07ECD1DF65191009D5069 /* NSString+LZBTranscoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LZBTranscoding.m"; sourceTree = "<group>"; };
+		18F07ECF1DF656C9009D5069 /* LZBEmojiModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZBEmojiModel.h; sourceTree = "<group>"; };
+		18F07ED01DF656C9009D5069 /* LZBEmojiModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZBEmojiModel.m; sourceTree = "<group>"; };
+		18F07ED21DF6577F009D5069 /* LZBEmojiButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZBEmojiButton.h; sourceTree = "<group>"; };
+		18F07ED31DF6577F009D5069 /* LZBEmojiButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZBEmojiButton.m; sourceTree = "<group>"; };
+		18F07ED51DF658A9009D5069 /* LZBFaceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZBFaceView.h; sourceTree = "<group>"; };
+		18F07ED61DF658A9009D5069 /* LZBFaceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZBFaceView.m; sourceTree = "<group>"; };
+		18F07EE21DF65959009D5069 /* Resource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Resource.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,17 +77,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		18A667B81DF4168900BC6664 /* Resource */ = {
-			isa = PBXGroup;
-			children = (
-				18A667B91DF4169300BC6664 /* iocn_comment_expression@2x.png */,
-				18A667BA1DF4169300BC6664 /* iocn_comment_expression@3x.png */,
-				18A667C01DF43F8E00BC6664 /* btn_comment_expression_send@2x.png */,
-				18A667C11DF43F8E00BC6664 /* btn_comment_expression_send@3x.png */,
-			);
-			path = Resource;
-			sourceTree = "<group>";
-		};
 		18E5710F1DEDB93F0048F386 = {
 			isa = PBXGroup;
 			children = (
@@ -129,17 +127,35 @@
 		18E571351DEDBA5A0048F386 /* LZBKeyBoardView */ = {
 			isa = PBXGroup;
 			children = (
-				18A667B81DF4168900BC6664 /* Resource */,
+				18F07EE21DF65959009D5069 /* Resource.bundle */,
+				18F07ECB1DF64E8D009D5069 /* FaceView */,
 				18E571361DEDBA5A0048F386 /* LZBTextView.h */,
 				18E571371DEDBA5A0048F386 /* LZBTextView.m */,
 				18A667B21DF40F6A00BC6664 /* LZBKeyBoardToolBar.h */,
 				18A667B31DF40F6A00BC6664 /* LZBKeyBoardToolBar.m */,
+				18F07ECC1DF65191009D5069 /* NSString+LZBTranscoding.h */,
+				18F07ECD1DF65191009D5069 /* NSString+LZBTranscoding.m */,
 				18D81EC61DEEF4D5007456A0 /* UIViewController+LZBKeyBoardObserver.h */,
 				18D81EC71DEEF4D5007456A0 /* UIViewController+LZBKeyBoardObserver.m */,
 				18A667B51DF415DE00BC6664 /* UIView+LZBViewFrame.h */,
 				18A667B61DF415DE00BC6664 /* UIView+LZBViewFrame.m */,
+				18F07EC81DF64D4D009D5069 /* LZBKeyBoardToolEmojiBar.h */,
+				18F07EC91DF64D4D009D5069 /* LZBKeyBoardToolEmojiBar.m */,
 			);
 			path = LZBKeyBoardView;
+			sourceTree = "<group>";
+		};
+		18F07ECB1DF64E8D009D5069 /* FaceView */ = {
+			isa = PBXGroup;
+			children = (
+				18F07ECF1DF656C9009D5069 /* LZBEmojiModel.h */,
+				18F07ED01DF656C9009D5069 /* LZBEmojiModel.m */,
+				18F07ED21DF6577F009D5069 /* LZBEmojiButton.h */,
+				18F07ED31DF6577F009D5069 /* LZBEmojiButton.m */,
+				18F07ED51DF658A9009D5069 /* LZBFaceView.h */,
+				18F07ED61DF658A9009D5069 /* LZBFaceView.m */,
+			);
+			path = FaceView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,11 +218,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				18E5712B1DEDB93F0048F386 /* LaunchScreen.storyboard in Resources */,
-				18A667BB1DF4169300BC6664 /* iocn_comment_expression@2x.png in Resources */,
-				18A667BC1DF4169300BC6664 /* iocn_comment_expression@3x.png in Resources */,
-				18A667C31DF43F8E00BC6664 /* btn_comment_expression_send@3x.png in Resources */,
-				18A667C21DF43F8E00BC6664 /* btn_comment_expression_send@2x.png in Resources */,
 				18E571281DEDB93F0048F386 /* Assets.xcassets in Resources */,
+				18F07EE31DF65959009D5069 /* Resource.bundle in Resources */,
 				18E571261DEDB93F0048F386 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -219,11 +232,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				18A667C61DF445C900BC6664 /* LZBKeyBoardToolVC.m in Sources */,
+				18F07ED41DF6577F009D5069 /* LZBEmojiButton.m in Sources */,
+				18F07ED11DF656C9009D5069 /* LZBEmojiModel.m in Sources */,
+				18F07ECA1DF64D4D009D5069 /* LZBKeyBoardToolEmojiBar.m in Sources */,
 				18D81EC81DEEF4D5007456A0 /* UIViewController+LZBKeyBoardObserver.m in Sources */,
+				18F07ED71DF658A9009D5069 /* LZBFaceView.m in Sources */,
 				18E571401DEDD1720048F386 /* LZBUserTextViewVC.m in Sources */,
 				18E571381DEDBA5A0048F386 /* LZBTextView.m in Sources */,
 				18A667B41DF40F6A00BC6664 /* LZBKeyBoardToolBar.m in Sources */,
 				18E571231DEDB93F0048F386 /* ViewController.m in Sources */,
+				18F07ECE1DF65191009D5069 /* NSString+LZBTranscoding.m in Sources */,
 				18E571201DEDB93F0048F386 /* AppDelegate.m in Sources */,
 				18A667B71DF415DE00BC6664 /* UIView+LZBViewFrame.m in Sources */,
 				18D81ECB1DEEF7A8007456A0 /* LZBAutoAdjustViewVC.m in Sources */,

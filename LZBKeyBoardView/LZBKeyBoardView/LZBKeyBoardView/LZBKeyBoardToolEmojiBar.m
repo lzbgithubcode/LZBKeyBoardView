@@ -1,18 +1,17 @@
 //
-//  LZBKeyBoardToolBar.m
+//  LZBKeyBoardToolEmojiBar.m
 //  LZBKeyBoardView
 //
-//  Created by zibin on 16/12/4.
+//  Created by zibin on 16/12/6.
 //  Copyright © 2016年 apple. All rights reserved.
 //
 
-#import "LZBKeyBoardToolBar.h"
+#import "LZBKeyBoardToolEmojiBar.h"
 #import "LZBTextView.h"
 #import "UIView+LZBViewFrame.h"
 
 //颜色转换
 #define LZBColorRGB(r,g,b) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1]
-#define LZBKeyboardBundleImage(name) [UIImage imageNamed:[NSString stringWithFormat:@"%@%@",@"Resource.bundle/",name]]
 
 #define kKeyboardViewToolBarHeight 50  // 默认键盘输入工具条的高度
 #define kKeyboardViewToolBar_TextView_Height 35  // 默认键盘输入框的高度
@@ -24,7 +23,7 @@
 #define LZBScreenWidth [UIScreen mainScreen].bounds.size.width
 #define inputextViewFont [UIFont systemFontOfSize:14.0]
 
-@interface LZBKeyBoardToolBar()
+@interface LZBKeyBoardToolEmojiBar()
 //View
 @property (nonatomic, strong) LZBTextView *inputTextView;  //输入框
 @property (nonatomic, strong) UIView *topLine;      // 顶部分割线
@@ -35,16 +34,13 @@
 @property (nonatomic, copy) void(^sendTextBlock)(NSString *text);  //输入框输入字符串回调Blcok
 @property (nonatomic, assign) CGFloat textHeight;   //输入文字高度
 @property (nonatomic, assign) CGFloat animationDuration;  //动画时间
-
-
 @end
 
-@implementation LZBKeyBoardToolBar
-
+@implementation LZBKeyBoardToolEmojiBar
 #pragma mark - API
-+ (LZBKeyBoardToolBar *)showKeyBoardWithConfigToolBarHeight:(CGFloat)toolBarHeight sendTextCompletion:(void(^)(NSString *sendText))sendTextBlock
++ (LZBKeyBoardToolEmojiBar *)showKeyBoardWithConfigToolBarHeight:(CGFloat)toolBarHeight sendTextCompletion:(void(^)(NSString *sendText))sendTextBlock
 {
-    LZBKeyBoardToolBar *toolBar = [[LZBKeyBoardToolBar alloc]init];
+    LZBKeyBoardToolEmojiBar *toolBar = [[LZBKeyBoardToolEmojiBar alloc]init];
     toolBar.backgroundColor = LZBColorRGB(247, 248, 250);
     if(toolBarHeight < kKeyboardViewToolBarHeight)
         toolBarHeight = kKeyboardViewToolBarHeight;
@@ -70,10 +66,10 @@
 #pragma mark - private
 - (instancetype)initWithFrame:(CGRect)frame
 {
-  if(self = [super initWithFrame:frame])
-  {
-      [self setupUI];
-  }
+    if(self = [super initWithFrame:frame])
+    {
+        [self setupUI];
+    }
     return self;
 }
 
@@ -90,7 +86,7 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-     __weak typeof(self) weakSelf = self;
+    __weak typeof(self) weakSelf = self;
     
     CGFloat height = (self.textHeight + kKeyboardViewToolBar_TextView_Height)> kKeyboardViewToolBarHeight ? (self.textHeight + kKeyboardViewToolBar_TextView_Height) : kKeyboardViewToolBarHeight;
     CGFloat offsetY = self.LZB_heigth - height;
@@ -111,7 +107,7 @@
     
     self.inputTextView.LZB_width = self.LZB_width - sendButtonSize.width - 3 *kKeyboardViewToolBar_Horizontal_DefaultMargin;
     self.inputTextView.LZB_x = kKeyboardViewToolBar_Horizontal_DefaultMargin;
-
+    
     
     [UIView animateWithDuration:self.animationDuration animations:^{
         weakSelf.inputTextView.LZB_heigth = weakSelf.LZB_heigth - 2 *kKeyboardViewToolBar_Vertical_DefaultMargin;
@@ -128,11 +124,11 @@
 #pragma mark - handle
 - (void)keyboardWillChangeFrame:(NSNotification *)notification
 {
-     CGRect keyboardFrame = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-     CGFloat keyboardHeight = keyboardFrame.size.height;
-     CGFloat keyboardAnimaitonDuration = [notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] floatValue];
-     self.animationDuration = keyboardAnimaitonDuration;
-     NSInteger option = [notification.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue];
+    CGRect keyboardFrame = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    CGFloat keyboardHeight = keyboardFrame.size.height;
+    CGFloat keyboardAnimaitonDuration = [notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] floatValue];
+    self.animationDuration = keyboardAnimaitonDuration;
+    NSInteger option = [notification.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue];
     
     //判断键盘是否出现
     BOOL isKeyBoardHidden = LZBScreenHeight == keyboardFrame.origin.y;
@@ -146,11 +142,11 @@
 
 - (void)textDidChange
 {
-   if([self.inputTextView.text containsString:@"\n"])
-   {
-       [self sendBtnClick];
-       return;
-   }
+    if([self.inputTextView.text containsString:@"\n"])
+    {
+        [self sendBtnClick];
+        return;
+    }
     
     CGFloat margin = self.inputTextView.textContainerInset.left + self.inputTextView.textContainerInset.right;
     
@@ -169,8 +165,8 @@
 
 - (void)sendBtnClick
 {
-   if(self.sendTextBlock)
-       self.sendTextBlock(self.inputTextView.text);
+    if(self.sendTextBlock)
+        self.sendTextBlock(self.inputTextView.text);
     self.inputTextView.text = nil;
     self.textHeight = 0;
     [self.inputTextView resignFirstResponder];
@@ -180,31 +176,31 @@
 #pragma mark - lazy
 - (UIButton *)sendBtn
 {
-  if(_sendBtn == nil)
-  {
-      _sendBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-      [_sendBtn setImage:LZBKeyboardBundleImage(@"btn_comment_expression_send") forState:UIControlStateNormal];
-      [_sendBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-      [_sendBtn addTarget:self action:@selector(sendBtnClick) forControlEvents:UIControlEventTouchUpInside];
-  }
+    if(_sendBtn == nil)
+    {
+        _sendBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_sendBtn setImage:[UIImage imageNamed:@"btn_comment_expression_send"] forState:UIControlStateNormal];
+        [_sendBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [_sendBtn addTarget:self action:@selector(sendBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    }
     return _sendBtn;
 }
 - (LZBTextView *)inputTextView
 {
-  if(_inputTextView == nil)
-  {
-      _inputTextView = [[LZBTextView alloc]init];
-      _inputTextView.layer.cornerRadius = 4;
-      _inputTextView.layer.masksToBounds = YES;
-      _inputTextView.layer.borderWidth = 1;
-      _inputTextView.layer.borderColor = LZBColorRGB(221, 221, 221).CGColor;
-      _inputTextView.font = inputextViewFont;
-      _inputTextView.textColor = LZBColorRGB(102, 102, 102);
-      _inputTextView.tintColor = _inputTextView.textColor;
-      _inputTextView.enablesReturnKeyAutomatically = YES;
-      _inputTextView.returnKeyType = UIReturnKeySend;
-      _inputTextView.placeholderColor = LZBColorRGB(150, 150, 150);
-  }
+    if(_inputTextView == nil)
+    {
+        _inputTextView = [[LZBTextView alloc]init];
+        _inputTextView.layer.cornerRadius = 4;
+        _inputTextView.layer.masksToBounds = YES;
+        _inputTextView.layer.borderWidth = 1;
+        _inputTextView.layer.borderColor = LZBColorRGB(221, 221, 221).CGColor;
+        _inputTextView.font = inputextViewFont;
+        _inputTextView.textColor = LZBColorRGB(102, 102, 102);
+        _inputTextView.tintColor = _inputTextView.textColor;
+        _inputTextView.enablesReturnKeyAutomatically = YES;
+        _inputTextView.returnKeyType = UIReturnKeySend;
+        _inputTextView.placeholderColor = LZBColorRGB(150, 150, 150);
+    }
     return _inputTextView;
 }
 
@@ -226,4 +222,7 @@
     }
     return _bottomLine;
 }
+
+
+
 @end
