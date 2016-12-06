@@ -8,7 +8,7 @@
 
 #import "LZBEmojiButton.h"
 #import "NSString+LZBTranscoding.h"
-
+#define LZBKeyboardBundleImage(name) [UIImage imageNamed:[NSString stringWithFormat:@"%@%@",@"Resource.bundle/",name]]
 @implementation LZBEmojiButton
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -30,7 +30,7 @@
 {
     _model = model;
     if (model.png) { // 有图片
-       // [self setImage:ZMLKeyboardBundleImage(emotion.png) forState:UIControlStateNormal];
+        [self setImage:LZBKeyboardBundleImage(model.png) forState:UIControlStateNormal];
     } else if (model.code) { // 是emoji表情
         // 设置emoji
         [self setTitle:model.code.emoji forState:UIControlStateNormal];

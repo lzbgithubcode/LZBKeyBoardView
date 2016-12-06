@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "LZBEmojiModel.h"
 @interface LZBFaceView : UIView
 
+- (void)setEmojiModles:(NSArray <LZBEmojiModel *>*)emojiModles selectEmojiModelBlock:(void(^)(LZBEmojiModel*selectModel))selectBlock deleteBlcok:(void(^)())deleteBlcok sendBlcok:(void(^)())sendBlock;
 @end

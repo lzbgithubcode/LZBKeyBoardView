@@ -9,5 +9,6 @@
 #import "LZBEmojiModel.h"
 
 @implementation LZBEmojiModel
-
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key
+{};
 @end

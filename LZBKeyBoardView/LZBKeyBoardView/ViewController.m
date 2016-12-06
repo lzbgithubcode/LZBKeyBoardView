@@ -10,6 +10,7 @@
 #import "LZBTextView.h"
 #import "LZBAutoAdjustViewVC.h"
 #import "LZBKeyBoardToolVC.h"
+#import "LZBEmojiKeyBoardVC.h"
 
 
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -28,11 +29,13 @@
     self.title= @"主页";
     self.methodKeys = @[@"LZBUserTextViewVC",
                         @"LZBAutoAdjustViewVC",
-                        @"LZBKeyBoardToolVC",];
+                        @"LZBKeyBoardToolVC",
+                         @"LZBEmojiKeyBoardVC",];
     //显示文字
     self.methodValues = @[@"LZBTextView的使用 - 输入多行文字",
                           @"自定调整View来适应键盘-登录页面常用",
                           @"无表情键盘工具条使用 - 发布评论常用",
+                          @"含有表情键盘工具条",
                           ];
 
 }

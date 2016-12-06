@@ -9,10 +9,15 @@
 #import "LZBKeyBoardToolEmojiBar.h"
 #import "LZBTextView.h"
 #import "UIView+LZBViewFrame.h"
+#import "LZBFaceView.h"
+#import "NSString+LZBTranscoding.h"
 
 //颜色转换
 #define LZBColorRGB(r,g,b) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1]
+//获取图片资源
+#define LZBKeyboardBundleImage(name) [UIImage imageNamed:[NSString stringWithFormat:@"%@%@",@"Resource.bundle/",name]]
 
+#define kKeyboardView_FaceViewHeight 216  // 表情键盘高度
 #define kKeyboardViewToolBarHeight 50  // 默认键盘输入工具条的高度
 #define kKeyboardViewToolBar_TextView_Height 35  // 默认键盘输入框的高度
 #define kKeyboardViewToolBar_TextView_LimitHeight 60  // 默认键盘输入框的限制高度
@@ -28,7 +33,8 @@
 @property (nonatomic, strong) LZBTextView *inputTextView;  //输入框
 @property (nonatomic, strong) UIView *topLine;      // 顶部分割线
 @property (nonatomic, strong) UIView *bottomLine;      // 底部分割线
-@property (nonatomic, strong) UIButton *sendBtn;      // 发送按钮
+@property (nonatomic, strong) UIButton *faceButton;      // 按钮
+@property (nonatomic, strong) LZBFaceView *faceView;
 
 //data
 @property (nonatomic, copy) void(^sendTextBlock)(NSString *text);  //输入框输入字符串回调Blcok
@@ -78,7 +84,15 @@
     [self addSubview:self.inputTextView];
     [self addSubview:self.topLine];
     [self addSubview:self.bottomLine];
-    [self addSubview:self.sendBtn];
+    [self addSubview:self.faceButton];
+     __weak typeof(self) weakSelf = self;
+    [self.faceView setEmojiModles:[self loadEmojiEmotions] selectEmojiModelBlock:^(LZBEmojiModel *selectModel) {
+        [weakSelf emojitionDidSelect:selectModel];
+    } deleteBlcok:^{
+        [weakSelf emojitionDidDelete];
+    } sendBlcok:^{
+        [weakSelf emojitionDidSend];
+    }];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textDidChange) name:UITextViewTextDidChangeNotification object:self.inputTextView];
 }
@@ -99,10 +113,10 @@
     self.bottomLine.LZB_width = self.LZB_width;
     
     
-    CGSize sendButtonSize = self.sendBtn.currentImage.size;
-    self.sendBtn.LZB_width = sendButtonSize.width;
-    self.sendBtn.LZB_heigth = sendButtonSize.height;
-    self.sendBtn.LZB_x = self.LZB_width - sendButtonSize.width - kKeyboardViewToolBar_Horizontal_DefaultMargin;
+    CGSize sendButtonSize = self.faceButton.currentImage.size;
+    self.faceButton.LZB_width = sendButtonSize.width;
+    self.faceButton.LZB_heigth = sendButtonSize.height;
+    self.faceButton.LZB_x = self.LZB_width - sendButtonSize.width - kKeyboardViewToolBar_Horizontal_DefaultMargin;
     
     
     self.inputTextView.LZB_width = self.LZB_width - sendButtonSize.width - 3 *kKeyboardViewToolBar_Horizontal_DefaultMargin;
@@ -112,7 +126,7 @@
     [UIView animateWithDuration:self.animationDuration animations:^{
         weakSelf.inputTextView.LZB_heigth = weakSelf.LZB_heigth - 2 *kKeyboardViewToolBar_Vertical_DefaultMargin;
         weakSelf.inputTextView.LZB_centerY = weakSelf.LZB_heigth * 0.5;
-        weakSelf.sendBtn.LZB_y = weakSelf.LZB_heigth - sendButtonSize.height -kKeyboardViewToolBar_Vertical_DefaultMargin;
+        weakSelf.faceButton.LZB_y = weakSelf.LZB_heigth - sendButtonSize.height -kKeyboardViewToolBar_Vertical_DefaultMargin;
         weakSelf.bottomLine.LZB_y = weakSelf.LZB_heigth - weakSelf.bottomLine.LZB_heigth;
     }];
     
@@ -130,6 +144,11 @@
     self.animationDuration = keyboardAnimaitonDuration;
     NSInteger option = [notification.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue];
     
+    // 普通文本键盘与表情键盘切换时，过滤
+    BOOL isEmojiKeyBoard = !self.faceButton.selected &&keyboardFrame.size.height == kKeyboardView_FaceViewHeight;
+    BOOL isNormalKeyBoard = self.faceButton.selected &&keyboardFrame.size.height != kKeyboardView_FaceViewHeight;
+    if(isEmojiKeyBoard || isNormalKeyBoard) return;
+    
     //判断键盘是否出现
     BOOL isKeyBoardHidden = LZBScreenHeight == keyboardFrame.origin.y;
     CGFloat offsetMarginY = isKeyBoardHidden ? LZBScreenHeight - self.LZB_heigth :LZBScreenHeight - self.LZB_heigth - keyboardHeight;
@@ -144,7 +163,7 @@
 {
     if([self.inputTextView.text containsString:@"\n"])
     {
-        [self sendBtnClick];
+        [self emojitionDidSend];
         return;
     }
     
@@ -163,27 +182,72 @@
     [self setNeedsLayout];
 }
 
-- (void)sendBtnClick
+- (void)faceButtonClick:(UIButton *)faceButton
 {
-    if(self.sendTextBlock)
-        self.sendTextBlock(self.inputTextView.text);
-    self.inputTextView.text = nil;
-    self.textHeight = 0;
+    faceButton.selected = !faceButton.isSelected;
+    self.bottomLine.hidden = !faceButton.selected;
     [self.inputTextView resignFirstResponder];
-    [self setNeedsLayout];
+    self.inputTextView.inputView = faceButton.selected?self.faceView : nil;
+    [self.inputTextView becomeFirstResponder];
 }
 
-#pragma mark - lazy
-- (UIButton *)sendBtn
+- (void)emojitionDidSelect:(LZBEmojiModel *)emojiModel
 {
-    if(_sendBtn == nil)
-    {
-        _sendBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_sendBtn setImage:[UIImage imageNamed:@"btn_comment_expression_send"] forState:UIControlStateNormal];
-        [_sendBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-        [_sendBtn addTarget:self action:@selector(sendBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    self.inputTextView.text = [self.inputTextView.text stringByAppendingString:emojiModel.code.emoji];
+    [self textDidChange];
+}
+
+- (void)emojitionDidDelete
+{
+    [self.inputTextView deleteBackward];
+}
+
+- (void)emojitionDidSend
+{
+    NSString *text = self.inputTextView.text;
+    if(self.sendTextBlock)
+        self.sendTextBlock(text);
+    self.inputTextView.text = nil;
+    [self textDidChange];
+}
+
+
+
+#pragma mark - lazy
+
+- (NSArray <LZBEmojiModel *>*)loadEmojiEmotions{
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"Resource.bundle/emoji.plist" ofType:nil];
+    
+    NSArray *emotions = [NSArray arrayWithContentsOfFile:path];
+    NSMutableArray *emotionsMul = [NSMutableArray array];
+    for (NSDictionary *dic in emotions) {
+        LZBEmojiModel *model = [[LZBEmojiModel alloc] init];
+        [model setValuesForKeysWithDictionary:dic];
+        [emotionsMul addObject:model];
     }
-    return _sendBtn;
+    return emotionsMul.copy;
+}
+- (LZBFaceView *)faceView
+{
+  if(_faceView == nil)
+  {
+      _faceView = [LZBFaceView new];
+      _faceView.backgroundColor = LZBColorRGB(240, 240, 240);
+      _faceView.frame = CGRectMake(0, 0, LZBScreenWidth, kKeyboardView_FaceViewHeight);
+  }
+    return _faceView;
+}
+- (UIButton *)faceButton
+{
+    if(_faceButton == nil)
+    {
+        _faceButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_faceButton setImage:LZBKeyboardBundleImage(@"iocn_comment_expression") forState:UIControlStateNormal];
+        [_faceButton setImage:LZBKeyboardBundleImage(@"iocn_comment_keyboard") forState:UIControlStateSelected];
+        [_faceButton addTarget:self action:@selector(faceButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _faceButton;
 }
 - (LZBTextView *)inputTextView
 {

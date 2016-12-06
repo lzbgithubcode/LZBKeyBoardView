@@ -26,6 +26,8 @@
 		18F07ED41DF6577F009D5069 /* LZBEmojiButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F07ED31DF6577F009D5069 /* LZBEmojiButton.m */; };
 		18F07ED71DF658A9009D5069 /* LZBFaceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F07ED61DF658A9009D5069 /* LZBFaceView.m */; };
 		18F07EE31DF65959009D5069 /* Resource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 18F07EE21DF65959009D5069 /* Resource.bundle */; };
+		18F07EE61DF660B0009D5069 /* LZBFaceSignlePageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F07EE51DF660B0009D5069 /* LZBFaceSignlePageView.m */; };
+		18F07EE91DF699BE009D5069 /* LZBEmojiKeyBoardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F07EE81DF699BE009D5069 /* LZBEmojiKeyBoardVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +66,10 @@
 		18F07ED51DF658A9009D5069 /* LZBFaceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZBFaceView.h; sourceTree = "<group>"; };
 		18F07ED61DF658A9009D5069 /* LZBFaceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZBFaceView.m; sourceTree = "<group>"; };
 		18F07EE21DF65959009D5069 /* Resource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Resource.bundle; sourceTree = "<group>"; };
+		18F07EE41DF660B0009D5069 /* LZBFaceSignlePageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZBFaceSignlePageView.h; sourceTree = "<group>"; };
+		18F07EE51DF660B0009D5069 /* LZBFaceSignlePageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZBFaceSignlePageView.m; sourceTree = "<group>"; };
+		18F07EE71DF699BE009D5069 /* LZBEmojiKeyBoardVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZBEmojiKeyBoardVC.h; sourceTree = "<group>"; };
+		18F07EE81DF699BE009D5069 /* LZBEmojiKeyBoardVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZBEmojiKeyBoardVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +117,8 @@
 				18D81ECA1DEEF7A8007456A0 /* LZBAutoAdjustViewVC.m */,
 				18A667C41DF445C900BC6664 /* LZBKeyBoardToolVC.h */,
 				18A667C51DF445C900BC6664 /* LZBKeyBoardToolVC.m */,
+				18F07EE71DF699BE009D5069 /* LZBEmojiKeyBoardVC.h */,
+				18F07EE81DF699BE009D5069 /* LZBEmojiKeyBoardVC.m */,
 				18E5711B1DEDB93F0048F386 /* Supporting Files */,
 			);
 			path = LZBKeyBoardView;
@@ -154,6 +162,8 @@
 				18F07ED31DF6577F009D5069 /* LZBEmojiButton.m */,
 				18F07ED51DF658A9009D5069 /* LZBFaceView.h */,
 				18F07ED61DF658A9009D5069 /* LZBFaceView.m */,
+				18F07EE41DF660B0009D5069 /* LZBFaceSignlePageView.h */,
+				18F07EE51DF660B0009D5069 /* LZBFaceSignlePageView.m */,
 			);
 			path = FaceView;
 			sourceTree = "<group>";
@@ -234,8 +244,10 @@
 				18A667C61DF445C900BC6664 /* LZBKeyBoardToolVC.m in Sources */,
 				18F07ED41DF6577F009D5069 /* LZBEmojiButton.m in Sources */,
 				18F07ED11DF656C9009D5069 /* LZBEmojiModel.m in Sources */,
+				18F07EE61DF660B0009D5069 /* LZBFaceSignlePageView.m in Sources */,
 				18F07ECA1DF64D4D009D5069 /* LZBKeyBoardToolEmojiBar.m in Sources */,
 				18D81EC81DEEF4D5007456A0 /* UIViewController+LZBKeyBoardObserver.m in Sources */,
+				18F07EE91DF699BE009D5069 /* LZBEmojiKeyBoardVC.m in Sources */,
 				18F07ED71DF658A9009D5069 /* LZBFaceView.m in Sources */,
 				18E571401DEDD1720048F386 /* LZBUserTextViewVC.m in Sources */,
 				18E571381DEDBA5A0048F386 /* LZBTextView.m in Sources */,
