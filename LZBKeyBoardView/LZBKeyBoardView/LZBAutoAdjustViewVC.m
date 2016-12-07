@@ -87,6 +87,12 @@
 }
 
 
+- (void)dealloc
+{
+    [self lzb_removeKeyBoardObserver];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 
 
 
