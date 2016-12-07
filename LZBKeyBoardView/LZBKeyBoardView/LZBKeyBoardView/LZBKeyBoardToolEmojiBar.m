@@ -40,6 +40,7 @@
 @property (nonatomic, copy) void(^sendTextBlock)(NSString *text);  //输入框输入字符串回调Blcok
 @property (nonatomic, assign) CGFloat textHeight;   //输入文字高度
 @property (nonatomic, assign) CGFloat animationDuration;  //动画时间
+@property (nonatomic, strong) NSString *placeHolder;  //占位文字
 @end
 
 @implementation LZBKeyBoardToolEmojiBar
@@ -58,6 +59,7 @@
 - (void)setInputViewPlaceHolderText:(NSString *)placeText
 {
     self.inputTextView.placeholder = placeText;
+    self.placeHolder = placeText;
 }
 - (void)becomeFirstResponder{
     [self.inputTextView becomeFirstResponder];
@@ -161,6 +163,8 @@
 
 - (void)textDidChange
 {
+    //注意：点击发送之后是先收到这个通知，收到通知的时候hasText = YES，让后再text = @"",所以在inputTextView里面的监听无效
+    self.inputTextView.placeHolderHidden = self.inputTextView.hasText;
     if([self.inputTextView.text containsString:@"\n"])
     {
         [self emojitionDidSend];
@@ -207,8 +211,27 @@
     NSString *text = self.inputTextView.text;
     if(self.sendTextBlock)
         self.sendTextBlock(text);
-    self.inputTextView.text = nil;
+    [self resetInputView];
     [self textDidChange];
+    
+}
+
+- (void)resetInputView
+{
+    self.inputTextView.text = @"";
+    [self setInputViewPlaceHolderText:self.placeHolder.length > 0 ? self.placeHolder : @""];
+    [self.inputTextView resignFirstResponder];
+    if(self.faceButton.selected)
+    {
+        self.faceButton.selected = !self.faceButton.isSelected;
+        self.bottomLine.hidden = !self.faceButton.selected;
+        self.inputTextView.inputView = self.faceButton.selected?self.faceView : nil;
+    }
+  
+    //布局的目的是布局textContainer 显示区域,显示区域回到初始位置
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self setNeedsLayout];
+    });
 }
 
 

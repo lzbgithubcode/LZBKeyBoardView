@@ -71,6 +71,12 @@
     self.textContainerInset = UIEdgeInsetsMake(cursorOffset.vertical, cursorOffset.horizontal, cursorOffset.vertical,cursorOffset.horizontal);
 }
 
+- (void)setPlaceHolderHidden:(BOOL)placeHolderHidden
+{
+    _placeHolderHidden = placeHolderHidden;
+    self.placeholderLabel.hidden = placeHolderHidden;
+}
+
 #pragma mark - hanlde
 -(void)computePlaceholderLabelSize
 {
@@ -87,7 +93,7 @@
 
 - (void)textDidChange
 {
-    self.placeholderLabel.hidden = self.hasText;
+    self.placeHolderHidden = self.hasText;
 }
 
 #pragma mark - lazy

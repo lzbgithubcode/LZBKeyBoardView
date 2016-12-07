@@ -39,6 +39,7 @@
         _keyboardView = [LZBKeyBoardToolEmojiBar showKeyBoardWithConfigToolBarHeight:0 sendTextCompletion:^(NSString *sendText) {
             weakSelf.textLabel.text = sendText;
         }];
+        [_keyboardView  setInputViewPlaceHolderText:@"请输入文字"];
     }
     return _keyboardView;
 }

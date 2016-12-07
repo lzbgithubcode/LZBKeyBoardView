@@ -35,4 +35,10 @@
  *  光标的偏移量
  */
 @property (nonatomic, assign) UIOffset  cursorOffset;
+
+/**
+ *  是否隐藏
+ */
+@property (nonatomic, assign)  BOOL placeHolderHidden;
+
 @end
