@@ -2,6 +2,7 @@
 //  LZBKeyBoardToolVC.m
 //  LZBKeyBoardView
 //
+// demo地址：https://github.com/lzbgithubcode/LZBKeyBoardView.git
 //  Created by zibin on 16/12/4.
 //  Copyright © 2016年 apple. All rights reserved.
 //
@@ -46,6 +47,7 @@
       _keyboardView = [LZBKeyBoardToolBar showKeyBoardWithConfigToolBarHeight:0 sendTextCompletion:^(NSString *sendText) {
           weakSelf.textLabel.text = sendText;
       }];
+      [_keyboardView setInputViewPlaceHolderText:@"请设置占位文字"];
   }
     return _keyboardView;
 }

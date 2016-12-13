@@ -2,6 +2,7 @@
 //  LZBKeyBoardToolBar.m
 //  LZBKeyBoardView
 //
+// demo地址：https://github.com/lzbgithubcode/LZBKeyBoardView.git
 //  Created by zibin on 16/12/4.
 //  Copyright © 2016年 apple. All rights reserved.
 //
@@ -35,6 +36,7 @@
 @property (nonatomic, copy) void(^sendTextBlock)(NSString *text);  //输入框输入字符串回调Blcok
 @property (nonatomic, assign) CGFloat textHeight;   //输入文字高度
 @property (nonatomic, assign) CGFloat animationDuration;  //动画时间
+@property (nonatomic, strong) NSString *placeHolder;  //占位文字
 
 
 @end
@@ -56,6 +58,7 @@
 - (void)setInputViewPlaceHolderText:(NSString *)placeText
 {
     self.inputTextView.placeholder = placeText;
+    self.placeHolder = placeText;
 }
 - (void)becomeFirstResponder{
     [self.inputTextView becomeFirstResponder];
@@ -171,11 +174,18 @@
 {
    if(self.sendTextBlock)
        self.sendTextBlock(self.inputTextView.text);
-    self.inputTextView.text = nil;
     self.textHeight = 0;
-    [self.inputTextView resignFirstResponder];
-    [self setNeedsLayout];
+    [self resetInputView];
 }
+
+- (void)resetInputView
+{
+    self.inputTextView.text = @"";
+    [self setInputViewPlaceHolderText:self.placeHolder.length > 0 ? self.placeHolder : @""];
+    [self.inputTextView resignFirstResponder];
+     self.inputTextView.placeHolderHidden = self.inputTextView.hasText;
+}
+
 
 #pragma mark - lazy
 - (UIButton *)sendBtn
