@@ -141,14 +141,14 @@
 				18E571371DEDBA5A0048F386 /* LZBTextView.m */,
 				18A667B21DF40F6A00BC6664 /* LZBKeyBoardToolBar.h */,
 				18A667B31DF40F6A00BC6664 /* LZBKeyBoardToolBar.m */,
+				18F07EC81DF64D4D009D5069 /* LZBKeyBoardToolEmojiBar.h */,
+				18F07EC91DF64D4D009D5069 /* LZBKeyBoardToolEmojiBar.m */,
 				18F07ECC1DF65191009D5069 /* NSString+LZBTranscoding.h */,
 				18F07ECD1DF65191009D5069 /* NSString+LZBTranscoding.m */,
 				18D81EC61DEEF4D5007456A0 /* UIViewController+LZBKeyBoardObserver.h */,
 				18D81EC71DEEF4D5007456A0 /* UIViewController+LZBKeyBoardObserver.m */,
 				18A667B51DF415DE00BC6664 /* UIView+LZBViewFrame.h */,
 				18A667B61DF415DE00BC6664 /* UIView+LZBViewFrame.m */,
-				18F07EC81DF64D4D009D5069 /* LZBKeyBoardToolEmojiBar.h */,
-				18F07EC91DF64D4D009D5069 /* LZBKeyBoardToolEmojiBar.m */,
 			);
 			path = LZBKeyBoardView;
 			sourceTree = "<group>";

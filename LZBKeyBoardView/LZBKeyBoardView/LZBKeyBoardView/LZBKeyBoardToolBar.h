@@ -27,7 +27,6 @@
 
 /**
  设置输入框占位文字
-
  @param placeText 占位文字
  */
 - (void)setInputViewPlaceHolderText:(NSString *)placeText;
